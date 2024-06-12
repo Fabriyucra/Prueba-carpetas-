@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tiendaTallerWeb2": {
+    "TallerWeb2Tienda": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -11,11 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tienda-taller-web2",
+            "outputPath": "dist/taller-web2-tienda",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -25,9 +25,12 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+ ]
           },
           "configurations": {
             "production": {
@@ -46,9 +49,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -57,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tiendaTallerWeb2:build:production"
+              "browserTarget": "TallerWeb2Tienda:build:production"
             },
             "development": {
-              "buildTarget": "tiendaTallerWeb2:build:development"
+              "browserTarget": "TallerWeb2Tienda:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "tiendaTallerWeb2:build"
+            "browserTarget": "TallerWeb2Tienda:build"
           }
         },
         "test": {
@@ -93,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "17d44ce0-1cef-407f-85f6-233dff72d16c"
+    "analytics": "547769d2-aa63-4415-858c-01f997dd1590"
   }
 }
